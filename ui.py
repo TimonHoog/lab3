@@ -16,7 +16,7 @@ class UI(tk.Frame):
 	def handle_payment(self, info: UIInfo):
 
 		# **************************************
-		# Below is the code you need to refactor
+		# Below is the code you need to refactor test
 		# **************************************
 
 		# get number of tariefeenheden

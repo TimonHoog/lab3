@@ -57,7 +57,7 @@ class UI(tk.Frame):
 			coin.starta()
 			coin.betala(int(round(price * 100)))
 			coin.stoppa()
-
+# je moeerrrrr
 		class Debit_Card(Payment_System):
 			d = DebitCard()
 			d.connect()

@@ -43,7 +43,7 @@ class Cash_Payment(Payment_System):
     def pay(self):
         coin = IKEAMyntAtare2000()
         coin.starta()
-        coin.betala(int(round(self.price * 100)))
+        coin.betala(int(round(self.price * 100))) #prijs wordt nog op centen gerekend, wij hadden volgens mij requirement op 10/5 centen. Moet nog even checken. 
         coin.stoppa()
 
 class Debit_Card(Payment_System):

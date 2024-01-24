@@ -1,6 +1,7 @@
 from datetime import datetime
 from ui_info import UIInfo
 from tkinter import messagebox
+
 class Ticket_Printer:
     def __init__(self, info: UIInfo, prijs):
         self.info = info

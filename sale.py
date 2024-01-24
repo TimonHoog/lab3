@@ -5,8 +5,6 @@ from ui_info import UIPayment, UIClass, UIWay, UIDiscount, UIPayment, UIInfo
 from abc import ABC, abstractmethod
 from tariefeenheden import Tariefeenheden
 from pricing_table import PricingTable
-from tkinter import messagebox
-import math
 
 class Oracle:
     @staticmethod
@@ -87,34 +85,3 @@ def payment_handling(info: UIInfo, price: float):
         payment_system = Cash_Payment(price)
 
     payment_system.pay()
-    
-
-# Als we de payment handling als class willen hebben:
-"""class PaymentHandler:
-    def __init__(self, info: UIInfo, price: float):
-        self.info = info
-        self.price = price
-
-    def handle_payment(self):
-        # add 50 cents if paying with credit card
-        if self.info.payment == UIPayment.CreditCard:
-            self.price += 0.50
-
-        # pay
-        if self.info.payment == UIPayment.CreditCard:
-            payment_system = Credit_Card(self.price)
-        elif self.info.payment == UIPayment.DebitCard:
-            payment_system = Debit_Card(self.price)
-        elif self.info.payment == UIPayment.Cash:
-            payment_system = Cash_Payment(self.price)
-
-        payment_system.pay()"""
-        
-#In UI.py moeten we dan doen:
-"""
-from sale import PaymentHandler
-def handle_payment(self, info: UIInfo):
-        price = Oracle.get_price(info)
-        handler = PaymentHandler(info, price)
-        handler.handle_payment()"""
-

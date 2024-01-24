@@ -1,9 +1,5 @@
 from tariefeenheden import Tariefeenheden
 import tkinter as tk
-from pricing_table import PricingTable
-from creditcard import CreditCard
-from debitcard import DebitCard
-from coin_machine import IKEAMyntAtare2000
 from ui_info import UIPayment, UIClass, UIWay, UIDiscount, UIPayment, UIInfo
 from sale import payment_handling, Oracle
 

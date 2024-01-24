@@ -14,6 +14,7 @@ class UI(tk.Frame):
 		self.widgets()
 
 	def handle_payment(self, info: UIInfo):
+     	#the design patterns are applied in sale.py, but referenced here
 		price = Oracle.get_price(info)
 		payment_handling(info, price)
 

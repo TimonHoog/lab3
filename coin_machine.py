@@ -3,10 +3,10 @@ from tkinter import messagebox
 class IKEAMyntAtare2000:
 
 	def starta(self):
-		messagebox.showinfo(message = "Välkommen till IKEA Mynt Ätare 2000")
+		messagebox.showinfo(message = "Insert cash")
 
 	def stoppa(self):
-		messagebox.showinfo(message = "Hejdå!")
+		messagebox.showinfo(message = "Payment succesful!")
 		
 	def betala(self, pris: int):
-		messagebox.showinfo(message = f"{pris} cent")
+		messagebox.showinfo(message = f"{pris} euro")

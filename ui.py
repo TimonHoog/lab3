@@ -2,17 +2,28 @@ from tariefeenheden import Tariefeenheden
 import tkinter as tk
 from ui_info import UIPayment, UIClass, UIWay, UIDiscount, UIPayment, UIInfo
 from sale import payment_handling, Oracle
+from ticket_printer import Ticket_Printer
+from tkinter import messagebox
 
-class UI(tk.Frame):
+class Vending_Machine(tk.Frame):
 
 	def __init__(self, master):
 		tk.Frame.__init__(self, master)
 		self.widgets()
 
+	# amount of tickets that are available in the printer to be printed.
+	amount_of_tickets = 100
+
 	def handle_payment(self, info: UIInfo):
-     	#the design patterns are applied in sale.py, but referenced here
+		#the design patterns are applied in sale.py, but referenced here
 		price = Oracle.get_price(info)
-		payment_handling(info, price)
+		if price == False:
+			messagebox.showwarning(title="Warning", message = "You can't travel to the same station twice!")
+		else: 
+			payment_handling(info, price)
+			#printing the ticket (in the terminal)
+			Ticket_Printer(info, price).print_ticket(info, price)
+			Vending_Machine.amount_of_tickets = Vending_Machine.amount_of_tickets - 1
 
 #region UI Set-up below -- you don't need to change anything
 
@@ -80,6 +91,7 @@ class UI(tk.Frame):
 	def on_click_pay(self):
 		self.handle_payment(self.get_ui_info())
 
+
 	def get_ui_info(self) -> UIInfo:
 		return UIInfo(from_station=self.from_station.get(),
 			to_station=self.to_station.get(),
@@ -97,7 +109,7 @@ class UI(tk.Frame):
 def main():
 
 	root = tk.Tk()
-	UI(root)
+	Vending_Machine(root)
 
 	root.mainloop()
 

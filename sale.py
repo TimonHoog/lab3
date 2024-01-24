@@ -5,14 +5,17 @@ from ui_info import UIPayment, UIClass, UIWay, UIDiscount, UIPayment, UIInfo
 from abc import ABC, abstractmethod
 from tariefeenheden import Tariefeenheden
 from pricing_table import PricingTable
-from ui_info import UIPayment, UIClass, UIWay, UIDiscount, UIPayment, UIInfo
+from tkinter import messagebox
+import math
 
 class Oracle:
     @staticmethod
     def get_price(info: UIInfo):
         # get number of tariefeenheden
+        if info.from_station == info.to_station:
+            return False
         tariefeenheden: int = Tariefeenheden.get_tariefeenheden(info.from_station, info.to_station)
-
+        
         # compute the column in the table based on choices
         table_column = 0
         if info.travel_class == UIClass.FirstClass:
@@ -29,7 +32,13 @@ class Oracle:
         if info.way == UIWay.Return:
             price *= 2
 
-        return price
+        # round price to the nearest 5 cents
+        price = round(price * 20) / 20
+
+        # format price with 2 decimals
+        formatted_price = "{:.2f}".format(price)
+
+        return formatted_price
 
 class Payment_System(ABC):
     def __init__(self, price):
@@ -40,17 +49,19 @@ class Payment_System(ABC):
         pass
 
 class Cash_Payment(Payment_System):
+    
     def pay(self):
         coin = IKEAMyntAtare2000()
         coin.starta()
-        coin.betala(int(round(self.price * 100))) #prijs wordt nog op centen gerekend, wij hadden volgens mij requirement op 10/5 centen. Moet nog even checken. 
+        # Round up to counts of 5
+        coin.betala(self.price)
         coin.stoppa()
 
 class Debit_Card(Payment_System):
     def pay(self):
         d = DebitCard()
         d.connect()
-        dcid: int = d.begin_transaction(round(self.price, 2))
+        dcid: int = d.begin_transaction(self.price)
         d.end_transaction(dcid)
         d.disconnect()
 
@@ -58,7 +69,7 @@ class Credit_Card(Payment_System):
     def pay(self):
         c = CreditCard()
         c.connect()
-        ccid: int = c.begin_transaction(round(self.price, 2))
+        ccid: int = c.begin_transaction(self.price)
         c.end_transaction(ccid)
         c.disconnect()
 

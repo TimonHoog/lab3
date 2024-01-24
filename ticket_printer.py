@@ -34,4 +34,4 @@ class Ticket_Printer:
             discount = '20% discount applied'
         elif discount == 3: 
             discount = '40% discount applied'
-        messagebox.showinfo(title="Ticket", message = f"Print date: {print_date}\nTicket amount: {to_print}\nTicket cost:{price} euro\nApplied discount: {discount}\nYou are travelling {carriage_class} class\nThe ticket is valid on: {travel_date}\nReturn ticket: {return_ticket}\nFrom: {starting_location}\nTo: {ending_location}")
+        messagebox.showinfo(title="Ticket", message = f"Print date: {print_date}\nTicket amount: {to_print}\nTicket cost:{price} euro\nApplied discount: {discount}\nYou are travelling {carriage_class} class\nThe ticket is valid on: {travel_date}\n Ticket type: {return_ticket}\nFrom: {starting_location}\nTo: {ending_location}")

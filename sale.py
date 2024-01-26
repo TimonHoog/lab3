@@ -6,6 +6,7 @@ from abc import ABC, abstractmethod
 from tariefeenheden import Tariefeenheden
 from pricing_table import PricingTable
 
+#aggregation with vending machine
 class Oracle:
     @staticmethod
     def get_price(info: UIInfo):
@@ -38,6 +39,8 @@ class Oracle:
 
         return formatted_price
 
+
+#Strategy design pattern
 class Payment_System(ABC):
     def __init__(self, price):
         self.price = price

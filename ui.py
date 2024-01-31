@@ -19,9 +19,9 @@ class Vending_Machine(tk.Frame):
 		price = Oracle.get_price(info)
 		if price == False:
 			messagebox.showwarning(title="Warning", message = "You cannot travel to the same station")
-		else: 
+		else:
 			payment_handling(info, price)
-			#printing the ticket (in the terminal)
+			#printing the ticket
 			Ticket_Printer(info, price).print_ticket(info, price)
 			Vending_Machine.amount_of_tickets = Vending_Machine.amount_of_tickets - 1
 

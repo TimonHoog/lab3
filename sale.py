@@ -75,12 +75,9 @@ class Credit_Card(Payment_System):
         c.disconnect()
 
 def payment_handling(info: UIInfo, price: float):
-    # add 50 cents if paying with credit card
-    if info.payment == UIPayment.CreditCard:
-        price += 0.50
-
     # pay
     if info.payment == UIPayment.CreditCard:
+        price = float(price) + 0.50
         payment_system = Credit_Card(price)
     elif info.payment == UIPayment.DebitCard:
         payment_system = Debit_Card(price)

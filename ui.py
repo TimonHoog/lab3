@@ -106,7 +106,6 @@ class Vending_Machine(tk.Frame):
 
 #endregion
 
-
 def main():
 
 	root = tk.Tk()

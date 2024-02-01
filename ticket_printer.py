@@ -15,9 +15,7 @@ class Ticket_Printer:
         carriage_class = info.travel_class
         # for now it will print the day the ticket is printed
         # https://stackoverflow.com/q/32490629
-        print_date = datetime.today().strftime('%d-%m-%Y')
-        # the GUI only prints tickets for today, otherwise print_date can be changed to a variable for another date
-        travel_date = print_date
+        ticket_date = datetime.today().strftime('%d-%m-%Y')
         return_ticket = info.way
         starting_location = info.from_station
         ending_location =  info.to_station
@@ -36,4 +34,4 @@ class Ticket_Printer:
             discount = '40% discount applied'
         if info.payment == 2:
             price = float(price) + 0.5
-        messagebox.showinfo(title="Ticket", message = f"Print date: {print_date}\nTicket amount: {to_print}\nTicket cost:{price} euro\nApplied discount: {discount}\nYou are travelling {carriage_class} class\nThe ticket is valid on: {travel_date}\n Ticket type: {return_ticket}\nFrom: {starting_location}\nTo: {ending_location}")
+        messagebox.showinfo(title="Ticket", message = f"Print date: {ticket_date}\nTicket amount: {to_print}\nTicket cost:{price} euro\nApplied discount: {discount}\nYou are travelling {carriage_class} class\nThe ticket is valid on: {ticket_date}\n Ticket type: {return_ticket}\nFrom: {starting_location}\nTo: {ending_location}")

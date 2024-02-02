@@ -1,7 +1,7 @@
 from creditcard import CreditCard
 from debitcard import DebitCard
 from coin_machine import IKEAMyntAtare2000
-from ui_info import UIPayment, UIClass, UIWay, UIDiscount, UIPayment, UIInfo
+from ui_info import UIClass, UIWay, UIDiscount, UIPayment, UIInfo
 from abc import ABC, abstractmethod
 from tariefeenheden import Tariefeenheden
 from pricing_table import PricingTable

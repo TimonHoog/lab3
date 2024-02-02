@@ -15,17 +15,15 @@ class Vending_Machine_logic(tk.Frame):
 	amount_of_tickets = 100
 
 	def handle_payment(self, info: UIInfo):
-		#the design patterns are applied in sale.py, but referenced here
+		# the design patterns are applied in sale.py, but referenced here
 		price = Oracle.get_price(info)
 		if price == False:
 			messagebox.showwarning(title="Warning", message = "You cannot travel to the same station")
 		else:
 			payment_handling(info, price)
-			#printing the ticket
+			# printing the ticket and subtracting the available tickets
 			Ticket_Printer(info, price).print_ticket(info, price)
 			Vending_Machine_logic.amount_of_tickets = Vending_Machine_logic.amount_of_tickets - 1
-
-	#region UI Set-up below -- you don't need to change anything
 
 	def widgets(self):
 		self.master.title("Ticket machine")

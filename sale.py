@@ -73,14 +73,3 @@ class Credit_Card(Payment_System):
         ccid: int = c.begin_transaction(self.price)
         c.end_transaction(ccid)
         c.disconnect()
-
-def payment_handling(info: UIInfo, price: float):
-    if info.payment == UIPayment.CreditCard:
-        price = float(price) + 0.50
-        payment_system = Credit_Card(price)
-    elif info.payment == UIPayment.DebitCard:
-        payment_system = Debit_Card(price)
-    elif info.payment == UIPayment.Cash:
-        payment_system = Cash_Payment(price)
-
-    payment_system.pay()

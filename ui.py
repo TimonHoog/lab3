@@ -11,6 +11,16 @@ class Vending_Machine_logic(tk.Frame):
 		tk.Frame.__init__(self, master)
 		self.widgets()
 
+	def payment_handling(info: UIInfo, price: float):
+		if info.payment == UIPayment.CreditCard:
+			price = float(price) + 0.50
+			payment_system = Credit_Card(price)
+		elif info.payment == UIPayment.DebitCard:
+			payment_system = Debit_Card(price)
+		elif info.payment == UIPayment.Cash:
+			payment_system = Cash_Payment(price)
+		payment_system.pay()
+
 	# amount of tickets that are available in the printer to be printed.
 	amount_of_tickets = 100
 

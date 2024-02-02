@@ -5,7 +5,7 @@ from sale import payment_handling, Oracle
 from ticket_printer import Ticket_Printer
 from tkinter import messagebox, ttk
 
-class Vending_Machine(tk.Frame):
+class Vending_Machine_logic(tk.Frame):
 
 	def __init__(self, master):
 		tk.Frame.__init__(self, master)
@@ -23,9 +23,9 @@ class Vending_Machine(tk.Frame):
 			payment_handling(info, price)
 			#printing the ticket
 			Ticket_Printer(info, price).print_ticket(info, price)
-			Vending_Machine.amount_of_tickets = Vending_Machine.amount_of_tickets - 1
+			Vending_Machine_logic.amount_of_tickets = Vending_Machine_logic.amount_of_tickets - 1
 
-#region UI Set-up below -- you don't need to change anything
+	#region UI Set-up below -- you don't need to change anything
 
 	def widgets(self):
 		self.master.title("Ticket machine")
@@ -110,7 +110,7 @@ def main():
 
 	root = tk.Tk()
 	root.configure(background="#0063D3")
-	Vending_Machine(root)
+	Vending_Machine_logic(root)
 
 	root.mainloop()
 

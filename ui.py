@@ -3,7 +3,7 @@ import tkinter as tk
 from ui_info import UIClass, UIWay, UIDiscount, UIPayment, UIInfo
 from sale import Credit_Card, Debit_Card, Cash_Payment, Oracle
 from ticket_printer import Ticket_Printer
-from tkinter import messagebox, ttk
+from tkinter import messagebox
 
 class Vending_Machine_logic(tk.Frame):
 

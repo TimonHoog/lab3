@@ -1,7 +1,7 @@
 from tariefeenheden import Tariefeenheden
 import tkinter as tk
 from ui_info import UIPayment, UIClass, UIWay, UIDiscount, UIPayment, UIInfo
-from sale import payment_handling, Oracle
+from sale import Credit_Card, Debit_Card, Cash_Payment, Oracle
 from ticket_printer import Ticket_Printer
 from tkinter import messagebox, ttk
 

@@ -11,7 +11,7 @@ class Vending_Machine_logic(tk.Frame):
 		tk.Frame.__init__(self, master)
 		self.widgets()
 
-	def payment_handling(info: UIInfo, price: float):
+	def payment_handling(self, info: UIInfo, price: float):
 		if info.payment == UIPayment.CreditCard:
 			price = float(price) + 0.50
 			payment_system = Credit_Card(price)
@@ -30,7 +30,7 @@ class Vending_Machine_logic(tk.Frame):
 		if price == False:
 			messagebox.showwarning(title="Warning", message = "You cannot travel to the same station")
 		else:
-			payment_handling(info, price)
+			self.payment_handling(info, price)
 			# printing the ticket and subtracting the available tickets
 			Ticket_Printer(info, price).print_ticket(info, price)
 			Vending_Machine_logic.amount_of_tickets = Vending_Machine_logic.amount_of_tickets - 1

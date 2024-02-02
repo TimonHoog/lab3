@@ -39,8 +39,8 @@ class Oracle:
 
         return formatted_price
 
-
-#Strategy design pattern
+# Strategy design pattern
+    
 class Payment_System(ABC):
     def __init__(self, price):
         self.price = price
@@ -75,7 +75,6 @@ class Credit_Card(Payment_System):
         c.disconnect()
 
 def payment_handling(info: UIInfo, price: float):
-    # pay
     if info.payment == UIPayment.CreditCard:
         price = float(price) + 0.50
         payment_system = Credit_Card(price)
